@@ -21,6 +21,19 @@ namespace FuelAppAPI.Controllers
             return await _fuelStationService.GetAsync();
         }
 
+        [HttpGet("{id:length(24)}")]
+        public async Task<ActionResult<FuelStation>> Get(string id)
+        {
+            var fuelStation = await _fuelStationService.GetAsync(id);
+
+            if (fuelStation is null)
+            {
+                return NotFound();
+            }
+
+            return fuelStation;
+        }
+
         [HttpPost]
         public async Task<ActionResult> CreateFuelStation([FromBody] FuelStation fuelStation) {
 
@@ -46,5 +59,22 @@ namespace FuelAppAPI.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id:length(24)}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var fuel = await _fuelStationService.GetAsync(id);
+
+            if (fuel is null)
+            {
+                return NotFound();
+            }
+
+            await _fuelStationService.RemoveAsync(id);
+
+            return NoContent();
+        }
+
+
     }
 }

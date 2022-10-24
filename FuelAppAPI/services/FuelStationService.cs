@@ -35,5 +35,8 @@ namespace FuelAppAPI.services
             await _fuelStationCollection.ReplaceOneAsync(x => x.Id == id, updatedFuelStation);
         }
 
+        public async Task RemoveAsync(string id) =>
+            await _fuelStationCollection.DeleteOneAsync(x => x.Id == id);
+
     }
 }
