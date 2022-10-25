@@ -13,5 +13,6 @@ namespace FuelAppAPI.models
         public string? email { get; set; }
         public string? mobile { get; set; } 
         public string? password { get; set; }
+        public string? type { get; set; }
     }
 }

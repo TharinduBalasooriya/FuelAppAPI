@@ -21,6 +21,9 @@ namespace FuelAppAPI.services
             return await _userCollection.Find(new BsonDocument()).ToListAsync();
         }
 
+        public async Task<User?> LoginAsync(string email , string password) =>
+            await _userCollection.Find( (acc => (acc.email == email && acc.password == password))).FirstOrDefaultAsync();
+
         public async Task<User?> GetAsync(string id) =>
         await _userCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 

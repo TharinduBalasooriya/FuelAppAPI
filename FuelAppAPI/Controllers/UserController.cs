@@ -44,5 +44,18 @@ namespace FuelAppAPI.Controllers
 
             return user;
         }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<User>> Get([FromBody] User user)
+        {
+            var logedUser = await _userService.LoginAsync(user.email , user.password);
+
+            if (user is null)
+            {
+                return NotFound();
+            }
+
+            return logedUser;
+        }
     }
 }
