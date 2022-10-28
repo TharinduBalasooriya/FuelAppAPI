@@ -11,7 +11,7 @@ namespace FuelAppAPI.models
         public string? Id { get; set; }
         public string ?area { get; set; }
         public string ?name { get; set; }
-        public int currentQueSize { get; set; }
+        public string? ownerId{ get; set; }
         public double averageTimeSpent { get; set; }
         public int updateVersionCount { get; set; }
 
